@@ -21,7 +21,7 @@ class main {
 
     public function __construct()
     {
-        //print_r($_REQUEST);
+        
         
         $pageRequest = 'homepage';
         
@@ -63,7 +63,7 @@ abstract class page {
     }
 
     public function post() {
-        //print_r($_POST);
+        
     }
 }
 
@@ -95,33 +95,14 @@ class htmlTable extends page {
       $tableDisplay="";
       $imageFileName = $_REQUEST['filename'];
        $file = fopen("uploads/".$imageFileName,"r");
-       //fgetcsv($file));
+       
        $tableDisplay .='<table style="width:100%">';
        while(! feof($file))
             {
                 $table=(fgetcsv($file));
                  $arrlength = count($table);
                  $i=0;
-                 
-                /* w3 schools : echo "<table border='1'><br />";
-                for ($row = 0; $row < 5; $row ++) 
-                {
-                    echo "<tr>";
-
-                      for ($col = 1; $col <= 4; $col ++)
-                       {
-                          echo "<td>", ($col + ($row * 4)), "</td>";
-                       }
-                      echo "</tr>";
-                }
-
-                      echo "</table>";
-                 
-                
-
-                //for($x = 0; $x < $arrlength; $x++)  
-                //echo $table[$x];  
-                //echo '';   */
+       
                 
 	  
                     $tableDisplay .=  '<tr>';
@@ -130,38 +111,11 @@ class htmlTable extends page {
                         $tableDisplay .='<td>'.$table[$i].'</td>';
 	                        }
                      	$tableDisplay .='</tr>';
-	
- 	                   
-               
-       // $tableDisplay .='<tr><td>'.$table[$arrlength].'</td></tr>';//.'</td><td>'.$table[1].'</td><td>'.$table[2].'</td></tr>';
-  
-                
+
             }
             $tableDisplay .='</table>';
            print($tableDisplay);
-       fclose($file);
-       
-      /* $output = '';
-       $rowcount = 0;
- 
-       $output .= "<table class='table'>";
-       foreach ($table as $row):{
-           $output .= "<tr class='tablerow'>";
-           $celltype = ($header && $rowcount == 0) ? "th" : "td";
-                 foreach ($row as $col){
-                      $output .= "<" . $celltype . " class='tablecell'>";
-                      $output .= $col;
-                      $output .= "</" . $celltype . ">";
-                 endforeach;
-                 }
-           $output .= "</tr>";
-           $rowcount++;
-       endforeach;
-       }
-       $output .= "</table>";
- 
-       return $output;*/
-       
+       fclose($file);       
           
     }
        
